@@ -1,4 +1,3 @@
-
 const { PDFDocument } = PDFLib;
 
 document.getElementById("splitButton").addEventListener("click", async () => {
@@ -36,7 +35,10 @@ document.getElementById("mergeButton").addEventListener("click", async () => {
   for (const file of fileInput.files) {
     const arrayBuffer = await file.arrayBuffer();
     const pdfDoc = await PDFDocument.load(arrayBuffer);
-    const copiedPages = await mergedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());
+    const copiedPages = await mergedPdf.copyPages(
+      pdfDoc,
+      pdfDoc.getPageIndices()
+    );
     copiedPages.forEach((page) => mergedPdf.addPage(page));
   }
 
